@@ -1,0 +1,17 @@
+# Simulación del Modelo de Ising
+
+Este proyecto implementa la simulación del modelo de Ising en 2D usando el algoritmo de Metropolis.
+
+## 📋 Contenido
+
+El proyecto incluye:
+- Códigos en C para simular el modelo de Ising con condiciones de contorno periódicas.
+- Scripts de Matlab para visualizar configuraciones de espines y analizar la evolución de la magnetización.
+- Archivos de salida con datos generados por las simulaciones.
+
+## 🔧 Compilación y ejecución
+
+Para compilar el código principal:
+
+```bash
+gcc -o ising_sim ising_sim.c -lm
