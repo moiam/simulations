@@ -54,7 +54,7 @@ double magnetizacion_media(int **espines, int L){
 			suma = suma + espines[i][j];
 		}
 	}
-	return suma / (L * L);
+	return fabs(suma/L*L);
 }
 // Implementación del algoritmo de Metropolis
 void algoritmo_metropolis(int **espines, int L, double T, double B, long pasos, const char *nombre_archivo){
@@ -90,7 +90,7 @@ void algoritmo_metropolis(int **espines, int L, double T, double B, long pasos, 
 		if (paso % 10000 == 0){
 			magnet_media = magnetizacion_media(espines, L);
 			pasos_registrados++;
-			fprintf(archivo, "%ld %lf\n", paso, fabs(magnet_media));
+			fprintf(archivo, "%ld %lf\n", paso, magnet_media);
 		}
 	}
 	printf("Simulación completada. Se registraron %ld puntos de magnetización en %s\n", pasos_registrados, nombre_archivo);
