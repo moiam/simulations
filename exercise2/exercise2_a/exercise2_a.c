@@ -54,11 +54,12 @@ double magnetizacion_media(int **espines, int L){
 			suma = suma + espines[i][j];
 		}
 	}
-	return fabs(suma/L*L);
+	return fabs(suma/(L*L));
 }
 // Implementación del algoritmo de Metropolis
 void algoritmo_metropolis(int **espines, int L, double T, double B, long pasos, const char *nombre_archivo){
 	double magnet_media, delta_H, r;
+	long intervalo_registro = 10000;
 	long pasos_registrados = 0;
 	int i, j;
 	FILE *archivo = fopen(nombre_archivo, "w");
@@ -87,7 +88,7 @@ void algoritmo_metropolis(int **espines, int L, double T, double B, long pasos, 
 				espines[i][j] = -espines[i][j]; // Inversión del espín
 			}
 		}
-		if (paso % 10000 == 0){
+		if (paso % intervalo_registro == 0){
 			magnet_media = magnetizacion_media(espines, L);
 			pasos_registrados++;
 			fprintf(archivo, "%ld %lf\n", paso, magnet_media);
